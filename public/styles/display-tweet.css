@@ -45,3 +45,12 @@ article.tweet footer{
   display:flex;
   justify-content: space-between;
 }
+
+/*hovering effect*/
+.tweet:hover{
+  box-shadow: 5px 10px #888888;
+}
+
+.tweet:hover header div.username{
+  display: none;
+}
