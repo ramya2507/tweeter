@@ -1,6 +1,8 @@
 .new-tweet{
   display:flex;
   flex-direction: column;
+  width:100%;
+  align-content: flex-start;
 }
 
 /*For form button*/
@@ -22,7 +24,7 @@
 
 
 /* Text input field */
-.new-tweet textarea {
+#tweet-text {
   width: 100%;
   height: 40px;
   border: 0;
