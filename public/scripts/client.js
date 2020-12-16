@@ -33,6 +33,9 @@
 
 
 $(document).ready(function(){
+  $('.new-tweet form').on('submit',function(e){
+    e.preventDefault();
+  })
 
   //function to render all the objects of the array
   const renderTweets = function(tweets) {
