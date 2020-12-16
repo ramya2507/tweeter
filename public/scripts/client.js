@@ -7,10 +7,19 @@
 $(document).ready(function(){
   $('.new-tweet form').on('submit',function(e){
     e.preventDefault();
-    $.ajax('/tweets/',{
-      method:'POST',
-      data:$(this).serialize(),
-    });
+    const data = $(this).serialize();
+    //data is alway equal to text= so char length is 140+5
+    if(data === 'text='){
+      return alert('You cannot post empty tweet');
+    } else if(data.length > 145){
+      return alert('Your tweet is too long to submit');
+    } else {
+      //console.log(data);
+      $.ajax('/tweets/',{
+        method:'POST',
+        data,
+      });
+    }
   });
   //function to get the /tweets/ using ajax
   const loadTweets = function(){
@@ -18,14 +27,15 @@ $(document).ready(function(){
       method:'GET',
       dataType:'JSON',
       success: tweets => renderTweets(tweets),
-    })
-    
+    });   
   }
+
+  loadTweets();
 
   //function to render all the objects of the array
   const renderTweets = function(tweets) {
    for(const tweet of tweets){
-     $('#tweets-container').append(createTweetElement(tweet));
+    $('#tweets-container').append(createTweetElement(tweet));
    }
   };
   //function to create html article dynamically
@@ -50,7 +60,6 @@ $(document).ready(function(){
     </article>`;
     return $indTweet;  
   };
-  loadTweets();  
 
 });
 
