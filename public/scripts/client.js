@@ -33,6 +33,8 @@
 
 
 $(document).ready(function(){
+
+  //function to render all the objects of the array
   const renderTweets = function(tweets) {
    for(const tweet of tweets){
      $('#tweets-container').append(createTweetElement(tweet));
