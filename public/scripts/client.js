@@ -35,7 +35,11 @@
 $(document).ready(function(){
   $('.new-tweet form').on('submit',function(e){
     e.preventDefault();
-  })
+    $.ajax('/tweets/',{
+      method:'POST',
+      data:$(this).serialize(),
+    });
+  });
 
   //function to render all the objects of the array
   const renderTweets = function(tweets) {
