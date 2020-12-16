@@ -51,9 +51,16 @@ article.tweet footer{
 
 /*hovering effect*/
 .tweet:hover{
-  box-shadow: 5px 10px #888888;
+  box-shadow: 8px 10px #888888;
+  font-weight: bold;
+}
+
+.tweet header div.username{
+  display:none;
 }
 
 .tweet:hover header div.username{
-  display: none;
+  display: block;
+  font-weight: lighter;
+  color: #888888;
 }
