@@ -15,15 +15,20 @@ $(document).ready(function(){
       return alert('Your tweet is too long to submit');
     } else {
       //console.log(data);
-      $.ajax('/tweets/',{
+      $.ajax('/tweets',{
         method:'POST',
         data,
+        success: function(){
+          loadTweets();
+          $('#tweet-text').val('');         
+          $('.counter').text('140');
+        }
       });
     }
   });
   //function to get the /tweets/ using ajax
   const loadTweets = function(){
-    $.ajax('/tweets/',{
+    $.ajax('/tweets',{
       method:'GET',
       dataType:'JSON',
       success: tweets => renderTweets(tweets),
@@ -35,7 +40,7 @@ $(document).ready(function(){
   //function to render all the objects of the array
   const renderTweets = function(tweets) {
    for(const tweet of tweets){
-    $('#tweets-container').append(createTweetElement(tweet));
+    $('#tweets-container').prepend(createTweetElement(tweet));
    }
   };
   //function to create html article dynamically
