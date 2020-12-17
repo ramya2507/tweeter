@@ -1,11 +1,48 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
- 
 $(document).ready(function(){
-  //function to make html text safe
+//function to convert milliseconds from 1970 to time in the past from today
+const millisecondsToOthers = milliseconds => {
+  const timeDifference = Date.now() - milliseconds;
+  let result = 0;
+  if (timeDifference < 1000) {
+    return "Moments";
+  } else if (timeDifference < 60000) {
+    result = Math.floor(timeDifference / 1000);
+    if (result > 1) {
+      return result + " seconds";
+    } else {
+      return result + " second";
+    }
+  } else if (timeDifference < 360000) {
+    result = Math.floor(timeDifference / 60000);
+    if(result > 1){
+      return result + " minutes";
+    } else {
+      return result + " minute";
+    }
+  } else if (timeDifference < 86400000) {
+    result = Math.floor(timeDifference / 360000);
+    if(result > 1){
+      return result + " hours";
+    } else {
+      return result + " hour";
+    }
+  } else if (timeDifference < 31536000000) {
+    result = Math.floor(timeDifference / 86400000);
+    if(result > 1){
+      return result + " days";
+    } else {
+      return result + " day";
+    }
+  } else {
+    result = Math.floor(timeDifference / 31536000000);
+    if(result > 1){
+      return result + " years";
+    } else {
+      return result + " year";
+    }
+  }
+}
+//function to make html text safe
   const escape =  function(str) {
     let p = document.createElement('p');
     p.appendChild(document.createTextNode(str));
@@ -72,7 +109,7 @@ $(document).ready(function(){
        ${escape(tweet.content.text)}
       </div>            
       <footer>
-        <div><p>${tweet.created_at}</p></div>
+        <div><p>${millisecondsToOthers(tweet.created_at)}</p></div>
         <div style='color:blue'>
          <i class="fas fa-flag"></i>
          <i class="fas fa-retweet"></i>
