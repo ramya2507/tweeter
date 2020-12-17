@@ -11,15 +11,20 @@ $(document).ready(function(){
     p.appendChild(document.createTextNode(str));
     return p.innerHTML;
   }
+  $('.error-message').hide();
   //to get the data on submission of form
   $('.new-tweet form').on('submit',function(e){
     e.preventDefault();
     const data = $(this).serialize();
     //data is alway equal to text= so char length is 140+5
     if(data === 'text='){
-      return alert('You cannot post empty tweet');
+      $('#error-text').append('<p>Enter a valid message</p>');
+      $('.error-message').fadeIn();
+      return;
     } else if(data.length > 145){
-      return alert('Your tweet is too long to submit');
+      $('#error-text').append('<p>Your tweet is too long to submit</p>');
+      $('.error-message').fadeIn();
+      return;
     } else {
       //console.log(data);
       $.ajax('/tweets',{
@@ -67,11 +72,11 @@ $(document).ready(function(){
       </div>            
       <footer>
         <div><p>${tweet.created_at}</p></div>
-        <div style='color:blue'><span>
-        <i class="fas fa-flag"></i>
-        <i class="fas fa-retweet"></i>
-        <i class="fas fa-heart"></i>
-      </span></div>
+        <div style='color:blue'>
+         <i class="fas fa-flag"></i>
+         <i class="fas fa-retweet"></i>
+         <i class="fas fa-heart"></i>
+        </div>
       </footer>
     </article>`;
     return $indTweet;  
