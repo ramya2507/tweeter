@@ -36,5 +36,22 @@ main{
   margin: auto;
   width: 90%; 
 }
- 
+
+/*style for error message*/
+.error-message{
+  align-content: center;
+  border:4px solid red;
+  color: red;
+  display:flex;
+  flex-direction: row;
+  font-size: 20px;
+  font-weight: bold;
+  justify-content: space-evenly;
+  margin: 8px;
+  width: 80%;
+}
+
+.icon-design{
+  font-size: 45px;
+}
  
