@@ -5,6 +5,13 @@
  */
  
 $(document).ready(function(){
+  //function to make html text safe
+  const escape =  function(str) {
+    let p = document.createElement('p');
+    p.appendChild(document.createTextNode(str));
+    return p.innerHTML;
+  }
+  //to get the data on submission of form
   $('.new-tweet form').on('submit',function(e){
     e.preventDefault();
     const data = $(this).serialize();
@@ -56,11 +63,15 @@ $(document).ready(function(){
         </div>
       </header>
       <div class="tweet-content">
-       <p>${tweet.content.text}</p>
+       ${escape(tweet.content.text)}
       </div>            
       <footer>
         <div><p>${tweet.created_at}</p></div>
-        <div><p>icons</p></div>
+        <div style='color:blue'><span>
+        <i class="fas fa-flag"></i>
+        <i class="fas fa-retweet"></i>
+        <i class="fas fa-heart"></i>
+      </span></div>
       </footer>
     </article>`;
     return $indTweet;  
