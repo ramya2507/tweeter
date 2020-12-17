@@ -18,11 +18,11 @@ $(document).ready(function(){
     const data = $(this).serialize();
     //data is alway equal to text= so char length is 140+5
     if(data === 'text='){
-      $('#error-text').append('<p>Enter a valid message</p>');
+      $('#error-text').children().text('Enter a valid message');
       $('.error-message').fadeIn();
       return;
     } else if(data.length > 145){
-      $('#error-text').append('<p>Your tweet is too long to submit</p>');
+      $('#error-text').children().text('Your tweet is too long to submit');
       $('.error-message').fadeIn();
       return;
     } else {
@@ -32,6 +32,7 @@ $(document).ready(function(){
         data,
         success: function(){
           loadTweets();
+          $('.error-message').hide();
           $('#tweet-text').val('');         
           $('.counter').text('140');
         }
