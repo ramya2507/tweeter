@@ -12,7 +12,7 @@ const millisecondsToOthers = milliseconds => {
     } else {
       return result + " second";
     }
-  } else if (timeDifference < 360000) {
+  } else if (timeDifference < 3600000) {
     result = Math.floor(timeDifference / 60000);
     if(result > 1){
       return result + " minutes";
@@ -20,7 +20,7 @@ const millisecondsToOthers = milliseconds => {
       return result + " minute";
     }
   } else if (timeDifference < 86400000) {
-    result = Math.floor(timeDifference / 360000);
+    result = Math.floor(timeDifference / 3600000);
     if(result > 1){
       return result + " hours";
     } else {
