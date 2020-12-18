@@ -31,8 +31,6 @@ nav span{
   display: flex;
   justify-content: center;
   position: relative;
-  animation: growDown 0.5s;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
+  animation: growDown 0.5s alternate infinite;
   margin-top: 2%;
 }
