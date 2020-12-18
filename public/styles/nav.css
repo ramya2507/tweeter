@@ -11,3 +11,14 @@ nav{
 nav span{
   font-family: 'Bungee', cursive;
 }
+
+#write-a-new-tweet {
+  float:right;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+#write-tweet{
+  color:red;
+  display: flex;
+  justify-content: center;
+}

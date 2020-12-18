@@ -3,6 +3,8 @@
   <head>
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
+    <!--ViewPort meta-->
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
 
     <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
@@ -32,10 +34,16 @@
   <body>
     <!-- Top nav bar (fixed) -->
     <nav>
-      <span>tweeter</span>
+      <span>Tweeter</span>
+      <span id="write-a-new-tweet">
+        <strong>Write</strong> a new tweet
+        <div>
+          <i id="write-tweet" class="fas fa-angle-double-down"></i>
+        </div>
+      </span>
     </nav>
     <header>
-      <div>
+      <div id="image">
           <img src="/images/profile-hex.png"> 
       </div>
       <br>
