@@ -1,18 +1,41 @@
-header{
-  align-items: center;
-  background-color: #bded1f;
-  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
-  display: flex;
-  flex-direction: column;
-  height: 400px;
-  justify-content: center;
-  margin-top: 120px;
-  width:100%;
+
+/*media query for every thing below 1024px*/
+@media only screen and (max-width:1024px){
+  #profile{
+    align-items: center;
+    background-color: #bded1f;
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    justify-content: center;
+    margin-top: 120px;
+    width:100%;
+  }
+  
+  /*style for profile image*/
+  #image{
+    margin-top:3%;
+    display: flex;
+    justify-content: center;
+  }
+}
+/*media query for desktop*/
+@media only screen and (min-width:1024px){
+  #profile{
+    background-color: #bded1f;
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
+    display: flex;
+    flex-direction: column;
+    width:33%;
+    height:50%;
+    justify-content: center;
+    align-items: center;
+    margin:200px 30px;
+  }
+  #image{
+    margin-top: 7%;
+  }
 }
 
-/*style for profile image*/
-#image{
-  height:300px;
-  width:300px;
-  margin-top:3%;
-}
+

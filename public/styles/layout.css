@@ -44,7 +44,7 @@ main{
   color: red;
   display:flex;
   flex-direction: row;
-  font-size: 20px;
+  font-size: 1.2rem;
   font-weight: bold;
   justify-content: space-evenly;
   margin: 8px;
@@ -52,6 +52,19 @@ main{
 }
 
 .icon-design{
-  font-size: 45px;
+  font-size: 3rem;
 }
  
+/*media query for desktop*/
+@media only screen and (min-width:1024px){
+  body{
+    display:flex;
+    justify-content: center;
+    align-content: center;
+  }
+  .container{
+    display:flex;
+    width:60%;
+    margin:200px 30px;
+  }
+}
