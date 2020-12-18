@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('#tweet-text').on('keyup',function(){
+  $('#tweet-text').on('keyup',function() {
     const remainingChar = 140 - $(this).val().length;
     const remainingCharText = $(this).siblings('div').children('.counter');
     remainingCharText.text(remainingChar);

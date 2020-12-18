@@ -1,64 +1,65 @@
 $(document).ready(function(){
-//function to convert milliseconds from 1970 to time in the past from today
-const millisecondsToOthers = milliseconds => {
-  const timeDifference = Date.now() - milliseconds;
-  let result = 0;
-  if (timeDifference < 1000) {
-    return "Moments";
-  } else if (timeDifference < 60000) {
-    result = Math.floor(timeDifference / 1000);
-    if (result > 1) {
-      return result + " seconds";
+  $('.error-message').hide();
+  //function to convert milliseconds from 1970 to time in the past from today
+  const millisecondsToOthers = milliseconds => {
+    const timeDifference = Date.now() - milliseconds;
+    let result = 0;
+    if (timeDifference < 1000) {
+      return "Moments";
+    } else if (timeDifference < 60000) {
+      result = Math.floor(timeDifference / 1000);
+      if (result > 1) {
+        return result + " seconds";
+      } else {
+        return result + " second";
+      }
+    } else if (timeDifference < 3600000) {
+      result = Math.floor(timeDifference / 60000);
+      if (result > 1) {
+        return result + " minutes";
+      } else {
+        return result + " minute";
+      }
+    } else if (timeDifference < 86400000) {
+      result = Math.floor(timeDifference / 3600000);
+      if (result > 1) {
+        return result + " hours";
+      } else {
+        return result + " hour";
+      }
+    } else if (timeDifference < 31536000000) {
+      result = Math.floor(timeDifference / 86400000);
+      if (result > 1) {
+        return result + " days";
+      } else {
+        return result + " day";
+      }
     } else {
-      return result + " second";
-    }
-  } else if (timeDifference < 3600000) {
-    result = Math.floor(timeDifference / 60000);
-    if(result > 1){
-      return result + " minutes";
-    } else {
-      return result + " minute";
-    }
-  } else if (timeDifference < 86400000) {
-    result = Math.floor(timeDifference / 3600000);
-    if(result > 1){
-      return result + " hours";
-    } else {
-      return result + " hour";
-    }
-  } else if (timeDifference < 31536000000) {
-    result = Math.floor(timeDifference / 86400000);
-    if(result > 1){
-      return result + " days";
-    } else {
-      return result + " day";
-    }
-  } else {
-    result = Math.floor(timeDifference / 31536000000);
-    if(result > 1){
-      return result + " years";
-    } else {
-      return result + " year";
+      result = Math.floor(timeDifference / 31536000000);
+      if(result > 1){
+        return result + " years";
+      } else {
+        return result + " year";
+      }
     }
   }
-}
-//function to make html text safe
+  //function to make html text safe
   const escape =  function(str) {
     let p = document.createElement('p');
     p.appendChild(document.createTextNode(str));
     return p.innerHTML;
   }
-  $('.error-message').hide();
+  
   //to get the data on submission of form
   $('.new-tweet form').on('submit',function(e){
     e.preventDefault();
     const data = $(this).serialize();
     //data is alway equal to text= so char length is 140+5
-    if(data === 'text='){
+    if (data === 'text=') {
       $('#error-text').children().text('Enter a valid message');
       $('.error-message').fadeIn();
       return;
-    } else if(data.length > 145){
+    } else if (data.length > 145) {
       $('#error-text').children().text('Your tweet is too long to submit');
       $('.error-message').fadeIn();
       return;
@@ -67,7 +68,7 @@ const millisecondsToOthers = milliseconds => {
       $.ajax('/tweets',{
         method:'POST',
         data,
-        success: function(){
+        success: function() {
           loadTweets();
           $('.error-message').hide();
           $('#tweet-text').val('');         
@@ -77,7 +78,7 @@ const millisecondsToOthers = milliseconds => {
     }
   });
   //function to get the /tweets/ using ajax
-  const loadTweets = function(){
+  const loadTweets = function() {
     $.ajax('/tweets',{
       method:'GET',
       dataType:'JSON',
@@ -119,6 +120,4 @@ const millisecondsToOthers = milliseconds => {
     </article>`;
     return $indTweet;  
   };
-
 });
-
