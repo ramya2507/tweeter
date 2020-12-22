@@ -54,17 +54,20 @@ $(document).ready(function(){
   $('.new-tweet form').on('submit',function(e){
     e.preventDefault();
     const data = $(this).serialize();
+    const $inputText = $(this).children('textarea');
+    const inputArea = $inputText.val().trim();
+    //data.length isnt working after escape so using the textarea directly
     //data is alway equal to text= so char length is 140+5
-    if (data === 'text=') {
+    if (!inputArea) {
       $('#error-text').children().text('Enter a valid message');
       $('.error-message').fadeIn();
       return;
-    } else if (data.length > 145) {
+    } else if (inputArea.length > 140) {
       $('#error-text').children().text('Your tweet is too long to submit');
       $('.error-message').fadeIn();
       return;
     } else {
-      //console.log(data);
+      console.log(data);
       $.ajax('/tweets',{
         method:'POST',
         data,
